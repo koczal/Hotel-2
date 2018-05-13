@@ -11,6 +11,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -40,6 +42,11 @@ import DataStoreOperations.RoomDataStore;
 import tableModels.BookingTableModel;
 import org.jdatepicker.JDatePicker;
 
+
+import org.jdatepicker.JDatePanel;
+import org.jdatepicker.JDatePicker;
+import org.jdatepicker.UtilDateModel;
+
 public class Booking_GUI extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
@@ -59,6 +66,8 @@ public class Booking_GUI extends JFrame {
 	private JLabel lbl_CheckOutDate;
 	private JTextField textField_RoomId;
 	private JLabel lblRoomId;
+	private JLabel lblCheckIn;
+	private JLabel lblCheckOut;
 
 	/**
 	 * Launch the application.
@@ -288,18 +297,21 @@ public class Booking_GUI extends JFrame {
 		lblRoomId.setBounds(34, 139, 91, 14);
 		contentPane.add(lblRoomId);
 		
-		JDatePicker datePicker = new JDatePicker();
-		datePicker.setBounds(152, 258, 202, 21);
-		contentPane.add(datePicker);
+		JDatePicker startDatePicker = new JDatePicker();
+		startDatePicker.setBounds(152, 258, 202, 21);
+		contentPane.add(startDatePicker);
 		
-		JDatePicker datePicker_1 = new JDatePicker();
-		datePicker_1.setBounds(152, 302, 202, 21);
-		contentPane.add(datePicker_1);
+		JDatePicker endDatePicker = new JDatePicker();
+		endDatePicker.setBounds(152, 302, 202, 21);
+		contentPane.add(endDatePicker);
 		
-		JLabel labelbackground = new JLabel("");
-		//labelbackground.setIcon(new ImageIcon (new URL("https://avante.biz/wp-content/uploads/Golf-Ball-Wallpapers/Golf-Ball-Wallpapers-043.jpg")));
-		labelbackground.setBounds(0, -165, 1171, 749);
-		contentPane.add(labelbackground);
+		lblCheckIn = new JLabel("Check In");
+		lblCheckIn.setBounds(34, 265, 46, 14);
+		contentPane.add(lblCheckIn);
+		
+		lblCheckOut = new JLabel("Check Out");
+		lblCheckOut.setBounds(34, 302, 91, 14);
+		contentPane.add(lblCheckOut);
 		
 		
 		setVisible(true);
@@ -309,13 +321,27 @@ public class Booking_GUI extends JFrame {
 		
 	}
 	
-	private Booking getinputBookingData()
+	public Booking getinputBookingData()
 	{
 		if (textField_BookingId.getText().isEmpty())
 			return null;
 		int bookingID =Integer.parseInt(textField_BookingId.getText()) ;
 		int guestId = Integer.parseInt(textField_GuestId.getText());
 		int roomId = Integer.parseInt(textField_RoomId.getText());
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MMM-yyyy");
+		String localDateStart;
+		String localDateEnd;
+		//////////
+		JDatePicker startDatePicker = new JDatePicker();
+		JDatePicker endDatePicker = new JDatePicker();
+		//////////
+		localDateStart = startDatePicker.getFormattedTextField().getText()
+				;
+		localDateEnd = endDatePicker.getFormattedTextField().getText()
+				;
+		
+		
 		
 		Date checkInDate=null,checkOutDate=null;
 		try {
