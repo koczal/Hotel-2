@@ -38,6 +38,7 @@ import DataStoreOperations.BookingDataStore;
 import DataStoreOperations.GuestDataStore;
 import DataStoreOperations.RoomDataStore;
 import tableModels.BookingTableModel;
+import org.jdatepicker.JDatePicker;
 
 public class Booking_GUI extends JFrame {
 	private JPanel contentPane;
@@ -114,7 +115,7 @@ public class Booking_GUI extends JFrame {
 
 		
 		JScrollPane scrollPane_5 = new JScrollPane();
-		scrollPane_5.setBounds(10, 267, 692, 382);
+		scrollPane_5.setBounds(10, 381, 692, 268);
 		contentPane.add(scrollPane_5);
 		
 		
@@ -266,16 +267,11 @@ public class Booking_GUI extends JFrame {
 		});
 		btnNewButton_1.setBounds(480, 202, 121, 38);
 		contentPane.add(btnNewButton_1);
-		
-		JLabel labelbackground = new JLabel("");
-		try {
-			labelbackground.setIcon(new ImageIcon (new URL("https://avante.biz/wp-content/uploads/Golf-Ball-Wallpapers/Golf-Ball-Wallpapers-043.jpg")));
+		/*try {
     	} catch (MalformedURLException e1) {
     		// TODO Auto-generated catch block
     		e1.printStackTrace();
-    	}
-		labelbackground.setBounds(0, -165, 1171, 749);
-		contentPane.add(labelbackground);
+    	}*/
 		
 		lbl_CheckOutDate = new JLabel("Check Out Date");
 		lbl_CheckOutDate.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -291,6 +287,19 @@ public class Booking_GUI extends JFrame {
 		lblRoomId.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblRoomId.setBounds(34, 139, 91, 14);
 		contentPane.add(lblRoomId);
+		
+		JDatePicker datePicker = new JDatePicker();
+		datePicker.setBounds(152, 258, 202, 21);
+		contentPane.add(datePicker);
+		
+		JDatePicker datePicker_1 = new JDatePicker();
+		datePicker_1.setBounds(152, 302, 202, 21);
+		contentPane.add(datePicker_1);
+		
+		JLabel labelbackground = new JLabel("");
+		//labelbackground.setIcon(new ImageIcon (new URL("https://avante.biz/wp-content/uploads/Golf-Ball-Wallpapers/Golf-Ball-Wallpapers-043.jpg")));
+		labelbackground.setBounds(0, -165, 1171, 749);
+		contentPane.add(labelbackground);
 		
 		
 		setVisible(true);
